@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My HTML Page</title>
+</head>
+<body>
+    <h1>Welcome to My Django App!</h1>
+<script>
+  const socket = new WebSocket("ws://localhost:8000/ws/notifications/");
+
+  socket.onmessage = function(e) {
+    const data = JSON.parse(e.data);
+    alert(data.title + ": " + data.body);
+  };
+
+  socket.onopen = function(e) {
+    console.log("WebSocket connection opened.");
+  };
+
+  socket.onclose = function(e) {
+    console.log("WebSocket connection closed.");
+  };
+</script>
+
+</body>
+</html>
