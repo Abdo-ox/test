@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 
 def home(request):
