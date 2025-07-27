@@ -5,6 +5,7 @@
 </head>
 <body>
     <h1>Welcome to My Django App!</h1>
+    <button id="button">send hello</button>
 <script>
   const socket = new WebSocket("wss://limset.um6p.ma/ws/notifications/");
 
@@ -20,6 +21,18 @@
   socket.onclose = function(e) {
     console.log("WebSocket connection closed.");
   };
+
+  document.getElementById('button').addEventListener('click', function() {
+  
+  const data = {
+    type: 'chat',
+    message: 'Hello, server!',
+    userId: 123
+  };
+
+  socket.send(JSON.stringify(data));
+  // You can add any action you want here
+});
 </script>
 
 </body>
