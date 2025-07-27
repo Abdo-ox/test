@@ -8,6 +8,7 @@ class NotificationConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=json.dumps({"data": "hello"}))
 
     async def disconnect(self, close_code):
+        print("socket disconnected:+>:---------------------------------------", flush=True)
         await self.channel_layer.group_discard("notifications", self.channel_name)
 
     async def receive(self, text_data):
